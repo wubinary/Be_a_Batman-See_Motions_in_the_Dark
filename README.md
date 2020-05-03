@@ -1,9 +1,9 @@
-# Be a Batman-See motions in the dark-An CLSTM Implementation Version
+# Be a Batman - See motions in the dark - An CLSTM Implementation Version
 
 ![](https://i.imgur.com/eeBx9aK.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp; An CLSTM pytorch implementation of Seeing motions in the dark.
-&nbsp;&nbsp;&nbsp;&nbsp; We Reproduce the idea of see motion in the dark using CLSTM model.
+### An CLSTM pytorch implementation of Seeing motions in the dark.
+### We Reproduce the idea of see motion in the dark using CLSTM model.
 
 [#Report](https://github.com/wubinary/Be_a_Batman-See_Motion_in_the_Dark/blob/master/documents/report.pdf)
 
