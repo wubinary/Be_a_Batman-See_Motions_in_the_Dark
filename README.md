@@ -2,10 +2,9 @@
 
 ![](https://i.imgur.com/eeBx9aK.png)
 
-### An CLSTM pytorch implementation of Seeing motions in the dark.
-### We Reproduce the idea of see motion in the dark using CLSTM model.
+#### An CLSTM pytorch implementation of Seeing motions in the dark.
+#### We Reproduce the idea of see motion in the dark using CLSTM model.
 
-[#Report](https://github.com/wubinary/Be_a_Batman-See_Motion_in_the_Dark/blob/master/documents/report.pdf)
 
 ## How to run
 ```
