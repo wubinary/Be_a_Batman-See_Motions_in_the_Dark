@@ -5,7 +5,7 @@
 #### An CLSTM pytorch implementation of Seeing motions in the dark.
 #### We Reproduce the idea of see motion in the dark using CLSTM model.
 
-&nbsp;&nbsp;&nbsp;&nbsp; __cowork by__  [jjjune0304](https://github.com/jjjune0304) , [772922440](https://github.com/772922440) , [shoutong]()
+&nbsp;&nbsp;&nbsp;&nbsp; __cowork by__  [jjjune0304](https://github.com/jjjune0304) , [772922440](https://github.com/772922440) , [nnddoon](https://github.com/nnddoon)
 
 ## How to run
 #### Testing only
