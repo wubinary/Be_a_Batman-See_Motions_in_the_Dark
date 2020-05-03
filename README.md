@@ -7,6 +7,12 @@
 
 
 ## How to run
+#### Testing
+```
+# export video result
+make export_video
+```
+#### Train by yourself
 ```
 # training
 make train_titan ##(VRAM>21G)
@@ -16,7 +22,7 @@ make train_1080 ##(VRAM>6G)
 modify makefile
 line 10 : (model path)
 
-# export vido result
+# export video result
 make export_video
 ```
 
