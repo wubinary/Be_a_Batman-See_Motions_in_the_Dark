@@ -7,7 +7,7 @@
 
 
 ## How to run
-#### Testing
+#### Testing only
 ```
 # export video result
 make export_video
