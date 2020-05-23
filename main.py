@@ -11,13 +11,13 @@ def parse_args():
                        type=int, help='Dataloader num of workers')
     parser.add_argument('--batch-size', default=4,
                         type=int, help='batch size')
+    parser.add_argument('--from-epoch', default=0,
+                        type=int, help='resume epoch')
     parser.add_argument('--epoch', default=8,
-                       type=int, help='epoch to train')
+                       type=int, help='epochs to train, (from resume)')
     parser.add_argument('--lr', default=1e-4, 
                         type=float, help='learning rate')    
-    parser.add_argument('--save-path', default='trained_model',
-                        type=str, help='h5 Model file saved directory')
-    parser.add_argument('--load-model-path', default='trained_model/epoch_0_loss_0.0062.pt',
+    parser.add_argument('--model-path', default='trained_model/epoch_0_loss_0.0062.pt',
                         type=str, help='load Model path')
     parser.add_argument('--gpu', default='0',
                         type=str, help='gpu number')
