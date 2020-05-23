@@ -4,8 +4,7 @@ from torchvision import transforms
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torchvision.models.vgg as vgg
-
+import torchvision.models.vgg as vgg 
 
 ################################################################
 ##################  Perceptron loss Function  ##################
