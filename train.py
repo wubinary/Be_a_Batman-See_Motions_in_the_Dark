@@ -1,7 +1,7 @@
 from model import * 
 from loss import *
 
-import os 
+import os, glob 
 
 def _run_epoch(dataloader, model, opt, criterion):
     
@@ -55,7 +55,9 @@ def train(args, train_dataloader, valid_dataloader):
     
     model = Model()
     if os.path.exists(args.load_model_path):
-        model.load_state_dict(torch.load(args.load_model_path)['state_dict'])
+        load_model_path = glob.glob(args.model_path+f'/epoch_{args.from_epoch}*')[0]
+        model.load_state_dict(torch.load(load_model_path)['state_dict'])
+        print(f'\t[Info] Resume traininig from {model_path}')
     model.cuda()
     
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr)
@@ -63,7 +65,7 @@ def train(args, train_dataloader, valid_dataloader):
     criterion = Consistency_Loss().cuda() 
 
     best_loss = None
-    for epoch in range(args.epoch):
+    for epoch in range(args.from_epoch+1, args.from_epoch+args.epoch+1):
         print(f' Epoch {epoch}')
         
         avg_train_loss = _run_epoch(train_dataloader, model, opt, criterion)
@@ -75,7 +77,7 @@ def train(args, train_dataloader, valid_dataloader):
         if best_loss is None or avg_valid_loss < best_loss:
             best_loss = avg_valid_loss
             save_path = "{}/epoch_{}_loss_{:.4f}.pt".format(
-                args.save_path, epoch, avg_valid_loss)
+                args.model_path, epoch, avg_valid_loss)
             torch.save({'state_dict': model.state_dict()}, save_path)
             print(f'\t [Info] save weights at {save_path}')
         else:
