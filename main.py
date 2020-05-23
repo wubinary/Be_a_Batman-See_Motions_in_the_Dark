@@ -47,7 +47,7 @@ if __name__ == '__main__':
     )
     valid_dataloader = DataLoader(
         dataset = valid_dataset,
-        batch_size=args.batch_size*4,
+        batch_size=args.batch_size*5,
         shuffle=False,
         collate_fn=DRV_collate_fn,
         num_workers=args.num_workers
