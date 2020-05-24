@@ -65,9 +65,10 @@ def train(args, train_dataloader, valid_dataloader):
     #criterion = Perceptual_Loss().cuda()
     criterion = Consistency_Loss().cuda() 
 
-    best_loss = None
+    lr, best_loss = args.lr, None
     for epoch in range(args.from_epoch+1, args.from_epoch+args.epoch+1):
         print(f' Epoch {epoch}')
+        print('\t [Info] lr:{:.5f}'.format(lr))
         
         avg_train_loss = _run_epoch(train_dataloader, model, opt, criterion)
         print('\t [Info] Avg Traing Loss:{:.4f} '.format(avg_train_loss))
@@ -81,6 +82,8 @@ def train(args, train_dataloader, valid_dataloader):
         else:
             for param_group in opt.param_groups:
                 param_group['lr'] /= 5
+                lr += param_group['lr']
+            lr /= len(opt.param_groups)
         
         ## save path
         save_path = "{}/epoch_{}_loss_{:.4f}.pt".format(
