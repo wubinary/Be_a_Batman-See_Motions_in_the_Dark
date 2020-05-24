@@ -22,14 +22,15 @@ def parse_args():
     parser.add_argument('--gpu', default='0',
                         type=str, help='gpu number')
     args = parser.parse_args()
-    if not os.path.isdir(args.save_path): os.makedirs(args.save_path)
+    if not os.path.isdir(args.model_path): os.makedirs(args.model_path)
     return args
 
 if __name__ == '__main__':
    
     args = parse_args()
 
-    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu#"0"
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu #"0"
+    os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
     warnings.filterwarnings('ignore')
     
     # Dataset ids
@@ -47,7 +48,7 @@ if __name__ == '__main__':
     )
     valid_dataloader = DataLoader(
         dataset = valid_dataset,
-        batch_size=args.batch_size*5,
+        batch_size=args.batch_size*4,
         shuffle=False,
         collate_fn=DRV_collate_fn,
         num_workers=args.num_workers
