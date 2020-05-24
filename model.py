@@ -258,7 +258,6 @@ class MFF(nn.Module):
         #x_m4 = self.up4(x_block4, size)
 
         #x = self.bn(self.conv(torch.cat((x_m1, x_m2, x_m3, x_m4), axis=1)))
-        #x = self.bn(self.conv(torch.cat((x_m1, x_m2), axis=1)))
         x = self.bn(self.conv(torch.cat((x_m1, x_m2, x_m3), axis=1)))
         x = F.relu(x)
         return x
