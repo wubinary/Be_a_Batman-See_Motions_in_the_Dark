@@ -54,10 +54,11 @@ def train(args, train_dataloader, valid_dataloader):
     torch.cuda.manual_seed_all(87)
     
     model = Model()
-    if os.path.exists(args.load_model_path):
+    #if os.path.exists(args.model_path):
+    if len(glob.glob(args.model_path+f'/epoch_{args.from_epoch}*')) > 0:
         load_model_path = glob.glob(args.model_path+f'/epoch_{args.from_epoch}*')[0]
         model.load_state_dict(torch.load(load_model_path)['state_dict'])
-        print(f'\t[Info] Resume traininig from {model_path}')
+        print(f'\t[Info] Resume traininig from {load_model_path}')
     model.cuda()
     
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr)
@@ -74,14 +75,18 @@ def train(args, train_dataloader, valid_dataloader):
         avg_valid_loss = _run_val(valid_dataloader, model, criterion)
         print('\t [Info] Avg Valid Loss:{:.4f} '.format(avg_valid_loss))
         
+        ## change lr
         if best_loss is None or avg_valid_loss < best_loss:
             best_loss = avg_valid_loss
-            save_path = "{}/epoch_{}_loss_{:.4f}.pt".format(
-                args.model_path, epoch, avg_valid_loss)
-            torch.save({'state_dict': model.state_dict()}, save_path)
-            print(f'\t [Info] save weights at {save_path}')
         else:
             for param_group in opt.param_groups:
                 param_group['lr'] /= 5
+        
+        ## save path
+        save_path = "{}/epoch_{}_loss_{:.4f}.pt".format(
+                args.model_path, epoch, avg_valid_loss)
+        torch.save({'state_dict': model.state_dict()}, save_path)
+        print(f'\t [Info] save weights at {save_path}') 
+        
         print('---------------------------------------------------')
        
