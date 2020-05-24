@@ -24,7 +24,7 @@ class DRVDataset(Dataset):
                 self.video_path.append(ins)
                 self.gt_path.append(gt_files)
                 
-        print(f'\t[Info] Load DRV Dataset completed! Total len {self.__len__()}. ')
+        print(f'\t [Info] Load DRV Dataset completed! Total len {self.__len__()}. ')
         
     def __len__(self):
         return len(self.gt_path)
