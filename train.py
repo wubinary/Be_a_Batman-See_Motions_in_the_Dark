@@ -71,9 +71,11 @@ def train(args, train_dataloader, valid_dataloader):
         print('\t [Info] lr:{:e}'.format(args.lr))
         
         loss = _run_epoch(train_dataloader, model, opt, criterion)
+        train_step_loss += loss #list
         print('\t [Info] Avg Traing Loss:{:.4f} '.format(mean(loss)))
         
         loss = _run_val(valid_dataloader, model, criterion)
+        valid_step_loss += loss #list
         print('\t [Info] Avg Valid Loss:{:.4f} '.format(mean(loss)))
         
         ## change lr
