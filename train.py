@@ -83,7 +83,7 @@ def train(args, train_dataloader, valid_dataloader):
         if best_loss is None or avg_valid_loss < best_loss:
             best_loss = avg_valid_loss
         else:
-            args.lr /= 4
+            args.lr /= 2
             for param_group in opt.param_groups:
                 param_group['lr'] /= args.lr 
         
