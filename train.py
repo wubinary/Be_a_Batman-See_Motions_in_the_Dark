@@ -52,7 +52,9 @@ def _run_val(dataloader, model, criterion):
 def train(args, train_dataloader, valid_dataloader):
     torch.manual_seed(87)
     torch.cuda.manual_seed_all(87)
-    
+    #torch.backends.cudnn.enabled = False
+    torch.backends.cudnn.benchmark=True
+
     model = Model()
     #if os.path.exists(args.model_path):
     if len(glob.glob(args.model_path+f'/epoch_{args.from_epoch}*')) > 0:
