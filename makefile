@@ -1,6 +1,6 @@
 
 train_titan:
-	python3 main.py --from-epoch -1 --epoch 8 --lr 2e-4 --batch-size 4 --num-workers 10 --gpu 0 --model-path trained_model/ 
+	python3 main.py --from-epoch -1 --epoch 8 --lr 2e-4 --batch-size 3 --num-workers 16 --gpu 0 --model-path trained_model/ 
 
 train_1080:
 	python3 main.py --from-epoch -1 --epoch 5 --lr 2e-4 --batch-size 1 --num-workers 10 --gpu 1 --model-path trained_model/
