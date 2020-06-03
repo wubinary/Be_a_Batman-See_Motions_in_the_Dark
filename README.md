@@ -10,6 +10,7 @@
 ## How to run
 #### Download dataset
 ```
+# total 269G
 make dataset_path=</dataset_save_path> download_dataset
 ```
 #### Testing only
