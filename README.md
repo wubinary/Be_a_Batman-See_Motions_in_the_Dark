@@ -29,11 +29,10 @@ make dataset_path=</dataset_save_path> train_1080ti
 make dataset_path=</dataset_save_path> train_1080 
 
 # after training
-modify makefile
-line 10 : (model path)
+your model is saved in ./trained_model/
 
 # export video result
-make export_video
+make dataset_path=<daaset_save_path> result_path=</result_save_path> model=trained_model/<epoch_x_loss_0.xxxx.pt> export_video
 ```
 
 ## Our result
