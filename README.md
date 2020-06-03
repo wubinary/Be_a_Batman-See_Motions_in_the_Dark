@@ -21,8 +21,12 @@ make dataset_path=</dataset_save_path> result_path=</result_save_path> export_vi
 #### Train by yourself
 ```
 # training
-make train_titan ##(VRAM>21G)
-make train_1080 ##(VRAM>6G)
+##(VRAM>21G)
+make dataset_path=</dataset_save_path> train_titan 
+##(VRAM>8G)
+make dataset_path=</dataset_save_path> train_1080ti
+##(VRAM>6G)
+make dataset_path=</dataset_save_path> train_1080 
 
 # after training
 modify makefile
