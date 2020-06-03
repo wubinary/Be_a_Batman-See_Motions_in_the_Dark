@@ -21,7 +21,7 @@ train_1080ti:
 
 result_path=result/
 export_video:
-	python3 export_video.py --model-path trained_model/epoch_0_loss_0.0062.pt --data-dir $(dataset_path) --save-path $(result_path) --gpu 1
+	python3 export_video.py --model-path trained_model/epoch_0_loss_0.0083.pt --data-dir $(dataset_path) --save-path $(result_path) --gpu 1
 
 
 
