@@ -237,16 +237,16 @@ class Decoder(nn.Module):
         return x_d4
 
 class MFF(nn.Module):
-    def __init__(self, block_channel, num_features=40):
+    def __init__(self, block_channel, num_features=32):
         super(MFF, self).__init__()
         self.up1 = UpProjection(
-                   num_input_features=block_channel[0], num_output_features=12)
+                   num_input_features=block_channel[0], num_output_features=16)
         self.up2 = UpProjection(
-                    num_input_features=block_channel[1], num_output_features=12)
-        self.up3 = UpProjection( 
-                    num_input_features=block_channel[2], num_output_features=8)
-        self.up4 = UpProjection(
-                   num_input_features=block_channel[3], num_output_features=8)
+                    num_input_features=block_channel[1], num_output_features=16)
+        #self.up3 = UpProjection( 
+        #            num_input_features=block_channel[2], num_output_features=8)
+        #self.up4 = UpProjection(
+        #           num_input_features=block_channel[3], num_output_features=8)
         self.conv = nn.Conv2d(
                     num_features, num_features, kernel_size=5, stride=1, padding=2, bias=False)
         self.bn = nn.BatchNorm2d(num_features)
@@ -254,11 +254,11 @@ class MFF(nn.Module):
     def forward(self, x_block1, x_block2, x_block3, x_block4, size):
         x_m1 = self.up1(x_block1, size)
         x_m2 = self.up2(x_block2, size)
-        x_m3 = self.up3(x_block3, size)
-        x_m4 = self.up4(x_block4, size)
+        #x_m3 = self.up3(x_block3, size)
+        #x_m4 = self.up4(x_block4, size)
 
         #x = self.bn(self.conv(torch.cat((x_m1, x_m2, x_m3, x_m4), axis=1)))
-        x = self.bn(self.conv(torch.cat((x_m1, x_m2, x_m3, x_m4), axis=1)))
+        x = self.bn(self.conv(torch.cat((x_m1, x_m2,), axis=1)))
         x = F.relu(x)
         return x
 
@@ -269,8 +269,8 @@ class Model(nn.Module):
         for p in self.encoder.parameters():
             p.requires_grad = False 
         self.decoder = Decoder(num_features)
-        self.MFF = MFF(block_channel=[64,128,256,512], num_features=40)
-        self.clstm = ConvLSTM(input_channels=56, hidden_channels=[24,3], 
+        self.MFF = MFF(block_channel=[64,128,256,512], num_features=32)
+        self.clstm = ConvLSTM(input_channels=48, hidden_channels=[32,3], 
                 kernel_size=3, step=3, effective_step=[0,1,2])
             
     def forward(self, x):
