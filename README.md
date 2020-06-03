@@ -8,10 +8,14 @@
 &nbsp;&nbsp;&nbsp;&nbsp; __cowork by__  [jjjune0304](https://github.com/jjjune0304) , [772922440](https://github.com/772922440) , [nnddoon](https://github.com/nnddoon)
 
 ## How to run
+#### Download dataset
+```
+make dataset_path=</dataset_save_path> download_dataset
+```
 #### Testing only
 ```
 # export video result
-make export_video
+make dataset_path=</dataset_save_path> result_path=</result_save_path> export_video
 ```
 #### Train by yourself
 ```
