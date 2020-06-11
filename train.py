@@ -50,10 +50,9 @@ def _run_val(dataloader, model, criterion):
     return step_loss
 
 def train(args, train_dataloader, valid_dataloader):
-    torch.manual_seed(87)
-    torch.cuda.manual_seed_all(87)
-    #torch.backends.cudnn.enabled = False
-    torch.backends.cudnn.benchmark=True
+    torch.manual_seed(987)
+    torch.cuda.manual_seed_all(987)
+    #torch.backends.cudnn.benchmark=True
 
     model = Model()
     #if os.path.exists(args.model_path):
@@ -85,7 +84,7 @@ def train(args, train_dataloader, valid_dataloader):
         if best_loss is None or avg_valid_loss < best_loss:
             best_loss = avg_valid_loss
         else:
-            args.lr /= 2
+            args.lr /= 5
             for param_group in opt.param_groups:
                 param_group['lr'] /= args.lr 
         
