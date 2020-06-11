@@ -18,10 +18,10 @@ def parse_args():
         '--data-dir', default='/data/CV/DRV',
         type=str, help='path of DRV dataset')
     parser.add_argument(
-        '--save-path', default='/data/CV/result',
+        '--save-path', default='result',
         type=str, help='Testing result saving directory path.')
     parser.add_argument(
-        '--model-path', default='trained_model/epoch_0_loss_0.0062.pt',
+        '--model-path', default='trained_model/epoch_1_loss_0.0061.pt',
         type=str, help='Model loading directory path.')
     parser.add_argument(
         '--num-workers', default=10, type=int, help='Dataloader worker nums')
