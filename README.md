@@ -35,11 +35,11 @@ your model is saved in ./trained_model/
 make dataset_path=<daaset_save_path> result_path=</result_save_path> model=trained_model/<epoch_x_loss_0.xxxx.pt> export_video
 ```
 
-## Our result
+## Our Result
 * [video results](https://github.com/wubinary/Be_a_Batman-See_Motion_in_the_Dark/tree/master/result/video)
 * [frame results](https://github.com/wubinary/Be_a_Batman-See_Motion_in_the_Dark/tree/master/result/frames)
 
-### Origin paper
+### Origin Paper
 1. [Learning to see In the Dark](https://arxiv.org/pdf/1805.01934.pdf) [CVPR 2018]
 2. [See Motion in the Dark](https://cqf.io/papers/Seeing_Motion_In_The_Dark_ICCV2019.pdf) [ICCV 2019]
 
@@ -65,7 +65,7 @@ make dataset_path=<daaset_save_path> result_path=</result_save_path> model=train
 ## Introduction
 &nbsp;&nbsp;&nbsp;&nbsp; There is some extremely low-light circumstance in our daily life, like candle dinner, outdoors under the moonlight and so on. In this regime, the traditional camera processing pipeline breaks down. Although researchers have proposed techniques for denoising, deblurring, and enhancement of low-light images. These Techniques generally assume that images are captured in somewhat dim environments with moderate levels of noise. In recent work [2], Chen et al. addressed this problem and proposed a siamese network, which gives to impressive results. However, they only consider one frame at a time during inference. Intuitively, taking the temporal correlations of consecutive frames into consideration is helpful. Therefore, we propose two methods, using CLSTM and 3D CNN, to take advantage of this useful information and obtain promising result compared with traditional pipelines.
 
-## Related work
+## Related Work
 &nbsp;&nbsp;&nbsp;&nbsp; Chen et al.[1] first proposed a new image processing pipeline that addresses the challenges of extreme low-light photography via a data-driven approach and train deep neural networks to learn the image processing pipeline for low-light raw data, including color transformations, demosaicing, noise reduction, and image enhancement. The pipeline is trained end-to-end to avoid the noise amplification and error accumulation that characterize traditional camera processing pipelines in this regime. In our work we want to get clear videos from processing the extremely low-light videos, but in [1], it only consider spatial artifacts but not temporal artifacts.
 
 &nbsp;&nbsp;&nbsp;&nbsp; And in [2], Chen et al. proposed a siamese network that preserves color while significantly suppressing spatial and temporal artifacts. The model was trained on static videos only but was shown to generalize to dynamic video.
